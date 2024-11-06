@@ -1,0 +1,23 @@
+title: Suspicious RDP Login
+id: 4ac35461-d02e-4b71-8b3f-2495f2ef95f4
+status: experimental
+description: Detects suspicious RDP login attempts from an unusual source
+author: Your Name
+date: 2024/11/06
+logsource:
+    category: windows
+    product: windows
+detection:
+    selection:
+        EventID: 4624
+        LogonType: 10
+    condition: selection
+fields:
+    - EventID
+    - LogonType
+    - AccountName
+    - SourceIPAddress
+    - WorkstationName
+falsepositives:
+    - Remote desktop access is legitimate for system administrators
+level: high
